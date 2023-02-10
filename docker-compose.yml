@@ -1,0 +1,19 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: alura_receita
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 095jmrcl
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DB_NAME: alura_receita
+      DB_USER: postgres
+      DB_PASSWORD: 095jmrcl
+      DB_HOST: db
+    depends_on:
+      - db
